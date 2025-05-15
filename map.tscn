@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc2m2ylno7hpy"]
+
+[ext_resource type="Texture2D" uid="uid://bxtqyvcy65cka" path="res://Sword-Coast-Map_HighRes.jpg" id="1_c7s6e"]
+[ext_resource type="Script" uid="uid://1v53hp6vcuoi" path="res://panning.gd" id="2_wijl4"]
+[ext_resource type="Script" uid="uid://cr5fpaoqees4s" path="res://controller.gd" id="3_e0an3"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sword-coast-mapHighRes" type="Sprite2D" parent="."]
+position = Vector2(-7.00002, -13)
+scale = Vector2(0.974697, 0.974697)
+texture = ExtResource("1_c7s6e")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.1, 0.1)
+script = ExtResource("2_wijl4")
+
+[node name="MapController" type="Node" parent="."]
+script = ExtResource("3_e0an3")
+
+[connection signal="panning" from="MapController" to="Camera2D" method="_moveCam"]
+[connection signal="zoom_changed" from="MapController" to="Camera2D" method="_zoom_camera"]
